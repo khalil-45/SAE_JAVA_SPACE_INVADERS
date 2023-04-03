@@ -3,6 +3,10 @@ public class EnsembleChaines {
     ArrayList<ChainePositionnee> chaines;
     public EnsembleChaines(){chaines= new ArrayList<ChainePositionnee>(); }
 
+    public ArrayList<ChainePositionnee> getChaines(){
+        return this.chaines;
+    }
+
     public void ajouteChaine(int x, int y, String c){
         chaines.add(new ChainePositionnee(x,y,c));}
 

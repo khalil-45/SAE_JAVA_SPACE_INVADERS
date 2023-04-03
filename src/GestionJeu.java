@@ -1,7 +1,7 @@
 public class GestionJeu{
     
-    private int largeur;
-    private int hauteur;
+    private double largeur;
+    private double hauteur;
     private double positionX;
     private EnsembleChaines chaines;
     private Vaisseau vaisseau;
@@ -15,20 +15,20 @@ public class GestionJeu{
         this.vaisseau = new Vaisseau(positionX);
     }
 
-    public int getLargeur(){return largeur;}
+    public double getLargeur(){return largeur;}
 
-    public int getHauteur(){return hauteur;}
+    public double getHauteur(){return hauteur;}
 
     public EnsembleChaines getChaines(){return chaines;}
 
     public void toucheDroite(){
         System.out.println("clic droit");
-        positionX++;
+        this.positionX++;
     }
 
     public void toucheGauche(){
 	    System.out.println("clic gauche");
-        positionX--;
+        this.positionX--;
     }
 
     public void toucheEspace(){
@@ -36,8 +36,9 @@ public class GestionJeu{
     }
 
     public void jouerUnTour(){
-        vaisseau.deplace(positionX);
-        this.chaines.union(vaisseau.getEnsembleChaines());
+            vaisseau.deplace(positionX);
+            this.chaines = new EnsembleChaines();
+            this.chaines.union(vaisseau.getEnsembleChaines());
     }
 
 
