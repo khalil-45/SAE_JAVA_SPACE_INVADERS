@@ -66,6 +66,7 @@ public class Executable extends Application {
             largeurCaractere = (int) t.getLayoutBounds().getWidth();
 
             Scene scene = new Scene(root,gestionnaire.getLargeur()*largeurCaractere,gestionnaire.getHauteur()*hauteurTexte);
+            scene.setFill(javafx.scene.paint.Color.RED);
             scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
                 if(key.getCode()==KeyCode.LEFT)
                     gestionnaire.toucheGauche();

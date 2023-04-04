@@ -15,4 +15,11 @@ public class EnsembleChaines {
             chaines.add(c);
     }
 
+    @Override
+    public String toString() {
+        return "EnsembleChaines{" +
+                "chaines=" + chaines +
+                '}';
+    }
+
 }

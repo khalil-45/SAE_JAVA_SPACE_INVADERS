@@ -8,9 +8,12 @@ public class Projectile {
         this.positionY = y;
     }
 
+    public double getPositionX(){return positionX;}
+    public double getPositionY(){return positionY;}
+
     public EnsembleChaines getEnsembleChaines(){
         EnsembleChaines e = new EnsembleChaines();
-        e.ajouteChaine((int)positionX, (int)positionY, "■■■");
+        e.ajouteChaine((int)positionX, (int)positionY, "■");
         return e;
     }
 
