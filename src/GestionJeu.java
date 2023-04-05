@@ -22,14 +22,14 @@ public class GestionJeu {
         this.lancerProj = false;
         this.score = new Score();
         this.alien = new ArrayList<Alien>();
-        this.alien.add(new Alien(0, 50));
-        this.alien.add(new Alien(10, 50));
-        this.alien.add(new Alien(20, 50));
-        this.alien.add(new Alien(30, 50));
-        this.alien.add(new Alien(40, 50));
-        this.alien.add(new Alien(50,50));
-        this.alien.add(new Alien(60, 50));
-        this.alien.add(new Alien(70, 50));
+        this.alien.add(new Alien(0, hauteur-8));
+        this.alien.add(new Alien(10, hauteur-8));
+        this.alien.add(new Alien(20, hauteur - 8));
+        this.alien.add(new Alien(30, hauteur - 8));
+        this.alien.add(new Alien(40, hauteur - 8));
+        this.alien.add(new Alien(50,hauteur - 8));
+        this.alien.add(new Alien(60, hauteur - 8));
+        this.alien.add(new Alien(70, hauteur - 8));
     }
 
     public double getLargeur(){return largeur;}
@@ -71,13 +71,21 @@ public class GestionJeu {
 
         score.ajouteScore(1);
 
-        for (Alien a : alien){
-            a.evolue();
-            System.out.println(a.getEnsembleChaines());
-            this.chaines.union(a.getEnsembleChaines());
+        for (Alien alien : this.alien){
+            this.chaines.union(alien.getEnsembleChaines());
+            alien.evolue();
         }
+
+        /* Si le projectile touche l'alien, on retire l'alien et on augmente le score
+        if (lancerProj && projectile.touche(a)) {
+            alien.remove(i);
+            lancerProj = false;
+            this.projectile = new Projectile(vaisseau.positionCanon(), 2);
+            score.ajouteScore(10);
+            break;
+        }
+        */
     }
 
-
+    }
     
-}

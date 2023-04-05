@@ -6,16 +6,23 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Executable",
+            "request": "launch",
+            "mainClass": "Executable",
+            "projectName": "SAE_JAVA_SPACE_INVADERS-1_4974894b"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
-            "vmArgs": "--module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml", 
+            "vmArgs": "--module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml",
             "mainClass": "${file}"
         },
         {
             "type": "java",
             "name": "Executable",
             "request": "launch",
-            "vmArgs": "--module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml", 
+            "vmArgs": "--module-path /usr/share/openjfx/lib/ --add-modules javafx.controls,javafx.fxml",
             "mainClass": "Executable",
             "projectName": "SAE_JAVA_SPACE_INVADERS_4ef11839"
         }

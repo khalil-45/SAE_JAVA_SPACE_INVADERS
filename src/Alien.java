@@ -21,25 +21,19 @@ public class Alien {
     }
 
     public void evolue() {
-        while (positionY > 0){
-            positionX += 0.1;
+        positionX += 0.1;
     
-            if (positionX == 100){
-                positionY -= 1;
-                int cpt = 0;
-    
-                while (cpt < 100){
-                    positionX -= 0.1;
-                    cpt++;
-                }
+        if (positionX >= 100){
+            positionY -= 1;
+            positionX -= 0.1;
             }
+        
     
-            positionY -= 0.1;  // Ajout de cette ligne pour faire descendre l'alien
     
-            // Condition pour sortir de la boucle
-            if (positionY <= 0) {
-                break;
-            }
+        if (positionY <= 0) {
+            System.out.println("Game Over");
+            System.exit(0);
+        }
         }
     }
-    }
+
