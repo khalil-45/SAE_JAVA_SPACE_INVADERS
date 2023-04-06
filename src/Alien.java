@@ -21,18 +21,34 @@ public class Alien {
     }
 
     public void evolue() {
-        positionX += 0.1;
-    
-        if (positionX >= 100){
-            positionY -= 1;
-            positionX -= 0.1;
+        boolean directionDroite;
+
+        if (positionX < 80) {
+            positionX += 0.1;
+        } else {
+            positionY -= 2;
+            directionDroite = false;
+        }
+
+
+        /* 
+        if (directionDroite) {
+            positionX += 0.1;
+            if (positionX >= 80) {
+                positionY -= 2;
+                directionDroite = false;
             }
-        
-    
-    
+        } else {
+            positionX -= 0.1;
+            if (positionX <= 10) {
+                positionY -= 2;
+                directionDroite = true;
+            }
+        }
+*/
         if (positionY <= 0) {
             System.out.println("Game Over");
-            System.exit(0);
+            //System.exit(0);
         }
         }
     }
