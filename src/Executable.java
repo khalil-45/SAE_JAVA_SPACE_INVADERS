@@ -14,6 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.util.Duration;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 
 
@@ -34,6 +39,7 @@ public class Executable extends Application {
         {
             Text t = new Text (c.x*largeurCaractere,hauteur - c.y*hauteurTexte, c.c);
             t.setFont(Font.font ("Monospaced", 10));
+            t.setFill(Color.BLUEVIOLET);
             caracteres.getChildren().add(t);
         }
     }
@@ -58,7 +64,16 @@ public class Executable extends Application {
         public void start(Stage primaryStage) {
             primaryStage.setTitle("IUTO Space Invader");
             caracteres = new Group();
-            root= new AnchorPane(caracteres);
+            // Création du menu
+            Label label = new Label("Menu");
+            Button lancerJeuButton = new Button("Lancer le jeu");
+            Button optionsButton = new Button("Options");
+            Button quitterButton = new Button("Quitter");
+            
+            Image image = new Image("file:img/space.png");
+            ImageView imageView = new ImageView(image);
+
+            root= new AnchorPane(imageView, caracteres);
             gestionnaire = new GestionJeu();
             Text t=new Text("█");
             t.setFont(Font.font("Monospaced",10));
@@ -66,7 +81,8 @@ public class Executable extends Application {
             largeurCaractere = (int) t.getLayoutBounds().getWidth();
 
             Scene scene = new Scene(root,gestionnaire.getLargeur()*largeurCaractere,gestionnaire.getHauteur()*hauteurTexte);
-            scene.setFill(javafx.scene.paint.Color.RED);
+
+
             scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
                 if(key.getCode()==KeyCode.LEFT)
                     gestionnaire.toucheGauche();

@@ -20,4 +20,11 @@ public class Projectile {
     public void evolue(){
         positionY += 0.2;
     }
+
+    public boolean touche(Alien alien){
+        if (this.positionX >= alien.getPositionX() && this.positionX <= alien.getPositionX()+10 && this.positionY >= alien.getPositionY() && this.positionY <= alien.getPositionY()+5){
+            return true;
+        }
+        return false;
+    }
 }

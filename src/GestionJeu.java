@@ -10,7 +10,7 @@ public class GestionJeu {
     private Projectile projectile;
     public boolean lancerProj;
     private Score score;
-    private ArrayList<Alien> alien;
+    private ArrayList<Alien> aliens;
 
 
     public GestionJeu(){
@@ -21,15 +21,15 @@ public class GestionJeu {
         this.projectile = new Projectile(vaisseau.positionCanon(), 2);
         this.lancerProj = false;
         this.score = new Score();
-        this.alien = new ArrayList<Alien>();
-        this.alien.add(new Alien(0, hauteur-8));
-        this.alien.add(new Alien(10, hauteur-8));
-        this.alien.add(new Alien(20, hauteur - 8));
-        this.alien.add(new Alien(30, hauteur - 8));
-        this.alien.add(new Alien(40, hauteur - 8));
-        this.alien.add(new Alien(50,hauteur - 8));
-        this.alien.add(new Alien(60, hauteur - 8));
-        this.alien.add(new Alien(70, hauteur - 8));
+        this.aliens = new ArrayList<Alien>();
+        this.aliens.add(new Alien(0, hauteur-8, 0.1));
+        this.aliens.add(new Alien(10, hauteur-8, 0.1));
+        this.aliens.add(new Alien(20, hauteur - 8, 0.1));
+        this.aliens.add(new Alien(30, hauteur - 8, 0.1));
+        this.aliens.add(new Alien(40, hauteur - 8, 0.1));
+        this.aliens.add(new Alien(50,hauteur - 8, 0.1));
+        this.aliens.add(new Alien(60, hauteur - 8, 0.1));
+        this.aliens.add(new Alien(70, hauteur - 8, 0.1));
     }
 
     public double getLargeur(){return largeur;}
@@ -71,20 +71,21 @@ public class GestionJeu {
 
         score.ajouteScore(1);
 
-        for (Alien alien : this.alien){
-            this.chaines.union(alien.getEnsembleChaines());
-            alien.evolue();
-        }
 
-        /* Si le projectile touche l'alien, on retire l'alien et on augmente le score
-        if (lancerProj && projectile.touche(a)) {
-            alien.remove(i);
+        for (Alien alien : this.aliens){
+            this.chaines.union(alien.getEnsembleChaines());
+            alien.evolue((int) this.largeur);
+        
+
+        // Si le projectile touche l'alien, on retire l'alien et on augmente le score
+        if (lancerProj && projectile.touche(alien)) {
+            aliens.remove(alien);
             lancerProj = false;
             this.projectile = new Projectile(vaisseau.positionCanon(), 2);
             score.ajouteScore(10);
             break;
         }
-        */
+    }
     }
 
     }

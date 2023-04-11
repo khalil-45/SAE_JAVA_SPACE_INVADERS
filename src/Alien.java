@@ -1,16 +1,23 @@
 public class Alien {
     private double positionX;
     private double positionY;
+    private double vitesse;
 
-    public Alien(double x, double y){
+    public Alien(double x, double y, double vitesse) {
         this.positionX = x;
         this.positionY = y;
+        this.vitesse = vitesse;
     }
 
-    public double getPositionX(){return positionX;}
-    public double getPositionY(){return positionY;}
+    public double getPositionX() {
+        return positionX;
+    }
 
-    public EnsembleChaines getEnsembleChaines(){
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public EnsembleChaines getEnsembleChaines() {
         EnsembleChaines e = new EnsembleChaines();
         e.ajouteChaine((int)positionX, (int)positionY+4, "▀▄░░░▄▀");
         e.ajouteChaine((int)positionX, (int)positionY+3, "▄█▀███▀█▄");
@@ -20,36 +27,24 @@ public class Alien {
         return e;
     }
 
-    public void evolue() {
-        boolean directionDroite;
+    public void evolue(int largeurFenetre) {
+        double deplacement = vitesse;
 
-        if (positionX < 80) {
-            positionX += 0.1;
-        } else {
-            positionY -= 2;
-            directionDroite = false;
+        positionX += deplacement;
+        
+        // Vérification de la limite droite de la fenêtre
+        if (positionX > largeurFenetre) {
+            positionX = largeurFenetre;
+            positionY -= 5;
+            vitesse = -vitesse; // Inversion de la vitesse pour repartir vers la gauche
         }
-
-
-        /* 
-        if (directionDroite) {
-            positionX += 0.1;
-            if (positionX >= 80) {
-                positionY -= 2;
-                directionDroite = false;
-            }
-        } else {
-            positionX -= 0.1;
-            if (positionX <= 10) {
-                positionY -= 2;
-                directionDroite = true;
-            }
-        }
-*/
-        if (positionY <= 0) {
-            System.out.println("Game Over");
-            //System.exit(0);
-        }
+        
+        // Vérification de la limite gauche de la fenêtre
+        if (positionX < 0) {
+            positionX = 0;
+            positionY -= 5 ;
+            vitesse = -vitesse; // Inversion de la vitesse pour repartir vers la droite
         }
     }
-
+    
+}
