@@ -17,12 +17,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 
 
 
-public class Executable extends Application {
+public class Jeu extends Application {
     private Pane root;
     private Group caracteres;
     private GestionJeu gestionnaire;
@@ -64,11 +62,6 @@ public class Executable extends Application {
         public void start(Stage primaryStage) {
             primaryStage.setTitle("IUTO Space Invader");
             caracteres = new Group();
-            // Création du menu
-            Label label = new Label("Menu");
-            Button lancerJeuButton = new Button("Lancer le jeu");
-            Button optionsButton = new Button("Options");
-            Button quitterButton = new Button("Quitter");
             
             Image image = new Image("file:img/space.png");
             ImageView imageView = new ImageView(image);
@@ -82,7 +75,7 @@ public class Executable extends Application {
 
             Scene scene = new Scene(root,gestionnaire.getLargeur()*largeurCaractere,gestionnaire.getHauteur()*hauteurTexte);
 
-
+            
             scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
                 if(key.getCode()==KeyCode.LEFT)
                     gestionnaire.toucheGauche();

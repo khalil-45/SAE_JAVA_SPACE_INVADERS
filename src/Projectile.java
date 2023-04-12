@@ -10,6 +10,8 @@ public class Projectile {
 
     public double getPositionX(){return positionX;}
     public double getPositionY(){return positionY;}
+    public void setPositionX(double x){this.positionX = x;}
+    public void setPositionY(double y){this.positionY = y;}
 
     public EnsembleChaines getEnsembleChaines(){
         EnsembleChaines e = new EnsembleChaines();
@@ -18,7 +20,7 @@ public class Projectile {
     }
 
     public void evolue(){
-        positionY += 0.2;
+        positionY += 1;
     }
 
     public boolean touche(Alien alien){
