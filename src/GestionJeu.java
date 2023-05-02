@@ -18,7 +18,6 @@ public class GestionJeu {
         this.hauteur=60;
         this.chaines = new EnsembleChaines();
         this.vaisseau = new Vaisseau(positionX);
-        this.projectile = new Projectile(vaisseau.positionCanon(), 2);
         this.lancerProj = false;
         this.score = new Score();
         this.aliens = new ArrayList<Alien>();
@@ -40,22 +39,21 @@ public class GestionJeu {
 
     public void toucheDroite(){
         System.out.println("clic droit");
-        this.positionX += 0.1;
+        this.vaisseau.deplace(2);
     }
 
     public void toucheGauche(){
 	    System.out.println("clic gauche");
-        this.positionX -= 0.1;
+        this.vaisseau.deplace(-2);
     }
 
     public void toucheEspace(){
         System.out.println("Appui sur la touche espace");
         this.lancerProj = true;
-        
+        this.projectile = new Projectile(vaisseau.positionCanon(), 2);
     }
 
     public void jouerUnTour(){
-        vaisseau.deplace(positionX);
         this.chaines = new EnsembleChaines();
         this.chaines.union(vaisseau.getEnsembleChaines());
 
@@ -66,7 +64,6 @@ public class GestionJeu {
 
         if (projectile.getPositionY() > this.hauteur){
             lancerProj = false;
-            this.projectile = new Projectile(vaisseau.positionCanon(), 2);
         }
 
         score.ajouteScore(1);
@@ -81,9 +78,12 @@ public class GestionJeu {
         if (lancerProj && projectile.touche(alien)) {
             aliens.remove(alien);
             lancerProj = false;
-            this.projectile = new Projectile(vaisseau.positionCanon(), 2);
             score.ajouteScore(10);
-            break;
+        }
+
+        if (this.aliens.isEmpty()){
+            System.out.println("Vous avez gagné !");
+            System.exit(0);
         }
     }
     }

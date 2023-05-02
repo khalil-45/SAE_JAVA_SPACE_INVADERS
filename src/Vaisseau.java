@@ -8,19 +8,19 @@ public class Vaisseau {
     }
 
     public double getPosX(){
-        return posX;
+        return this.posX;
     }
 
     public void deplace(double dx){
         double limiteGauche = 0;
         double limiteDroite = 100-10;
 
-        if (posX + dx < limiteGauche){
-            posX = limiteGauche;
+        if (this.posX + dx < limiteGauche){
+            this.posX = limiteGauche;
         } else if (posX + dx > limiteDroite){
-            posX = limiteDroite;
+            this.posX = limiteDroite;
         } else {
-            posX += dx;
+            this.posX += dx;
         }
     }
 
@@ -33,6 +33,6 @@ public class Vaisseau {
     }
 
     public double positionCanon(){
-        return posX + 5;
+        return this.posX + 5;
     }
 }

@@ -5,9 +5,8 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import java.io.File;
+
 
 
 public class Menu extends Application {
@@ -20,17 +19,22 @@ public class Menu extends Application {
         Button optionsBtn = new Button("Options");
         Button quitterBtn = new Button("Quitter");
 
-        // Création d'un objet MediaPlayer pour la musique de fond
-        Media media = new Media(new File("MenuJeu.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
-        
+        // Ajout de la musique en arrière-plan
+        SampledPlayer bgMusic = new SampledPlayer(new File("src/MenuJeu.mp3"));
+        bgMusic.play(true);        
+
         // Ajout d'un événement de clic sur le bouton "Jouer"
         jouerBtn.setOnAction(e -> {
             // Lancement du jeu
                 Jeu jeu = new Jeu();
                 jeu.start(primaryStage);
+        });
+
+        // Ajout d'un événement de clic sur le bouton "Options"
+        optionsBtn.setOnAction(e -> {
+            // Lancement des options
+            Options options = new Options();
+            options.start(primaryStage);
         });
 
         // Ajout d'un événement de clic sur le bouton "Quitter"
