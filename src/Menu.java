@@ -4,12 +4,16 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.geometry.Pos;
 import java.io.File;
+import javafx.scene.media.Media;
+
 
 
 
 public class Menu extends Application {
+
 
     @Override
     public void start(Stage primaryStage){
@@ -19,9 +23,7 @@ public class Menu extends Application {
         Button optionsBtn = new Button("Options");
         Button quitterBtn = new Button("Quitter");
 
-        // Ajout de la musique en arrière-plan
-        SampledPlayer bgMusic = new SampledPlayer(new File("src/MenuJeu.mp3"));
-        bgMusic.play(true);        
+        playMusic();
 
         // Ajout d'un événement de clic sur le bouton "Jouer"
         jouerBtn.setOnAction(e -> {
@@ -57,6 +59,14 @@ public class Menu extends Application {
 
     }
 
+    MediaPlayer mediaPlayer;
+    public void playMusic(){
+        String musicFile = "src/MenuJeu.mp3";
+        Media media = new Media(new File(musicFile).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
+    }
 
     public static void main(String[] args) {
         launch(args);
