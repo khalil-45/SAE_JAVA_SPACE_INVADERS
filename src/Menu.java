@@ -64,10 +64,13 @@ public class Menu extends Application {
         String musicFile = "src/MenuJeu.mp3";
         Media media = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setVolume(0.5);
+        mediaPlayer.setVolume(0.1);
         mediaPlayer.play();
     }
 
+    public MediaPlayer getMediaPlayer(){
+        return this.mediaPlayer;
+    }
     public static void main(String[] args) {
         launch(args);
     }

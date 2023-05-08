@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Jeu",
+            "request": "launch",
+            "mainClass": "Jeu",
+            "projectName": "SAE_JAVA_SPACE_INVADERS_5c3f4167"
+        },
+        {
+            "type": "java",
+            "name": "Menu",
+            "request": "launch",
+            "mainClass": "Menu",
+            "projectName": "SAE_JAVA_SPACE_INVADERS_5c3f4167"
+        },
+        {
+            "type": "java",
             "name": "Executable",
             "request": "launch",
             "mainClass": "Executable",
